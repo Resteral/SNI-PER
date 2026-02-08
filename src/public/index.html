@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNI-PER Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔫 SNI-PER Bot Dashboard</h1>
+            <div id="status" class="status-indicator">Active</div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2>🔍 Detected Pairs</h2>
+                <ul id="pairs-list" class="log-list">
+                    <!-- Pairs will appear here -->
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>💰 Trade History</h2>
+                <ul id="trades-list" class="log-list">
+                    <!-- Trades will appear here -->
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card full-width">
+            <h2>📜 System Logs</h2>
+            <div id="system-logs" class="console-log">
+                <!-- Logs will appear here -->
+            </div>
+        </div>
+    </div>
+    <script src="client.js"></script>
+</body>
+</html>
