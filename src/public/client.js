@@ -2,6 +2,7 @@ const socket = io();
 
 const pairsList = document.getElementById('pairs-list');
 const tradesList = document.getElementById('trades-list');
+const positionsList = document.getElementById('positions-list');
 const sysLogs = document.getElementById('system-logs');
 
 socket.on('newPair', (data) => {
@@ -10,6 +11,18 @@ socket.on('newPair', (data) => {
                     <strong>${data.token}</strong> <br> 
                     <small>${data.pair}</small>`;
     pairsList.prepend(li);
+});
+
+socket.on('positions', (data) => {
+    positionsList.innerHTML = ''; // Clear current list
+    data.forEach(pos => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${pos.token}</strong> | Cost: ${pos.cost} BNB | 
+                        <span class="${pos.profit >= 0 ? 'trade-buy' : 'trade-sell'}">
+                            ${pos.profit}%
+                        </span>`;
+        positionsList.appendChild(li);
+    });
 });
 
 socket.on('trade', (data) => {

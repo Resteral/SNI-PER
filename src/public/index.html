@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -21,15 +23,22 @@
                     <!-- Pairs will appear here -->
                 </ul>
             </div>
-            
+
             <div class="card">
                 <h2>💰 Trade History</h2>
                 <ul id="trades-list" class="log-list">
                     <!-- Trades will appear here -->
                 </ul>
             </div>
+
+            <div class="card full-width">
+                <h2>📈 Active Positions</h2>
+                <ul id="positions-list" class="log-list">
+                    <!-- Positions will appear here -->
+                </ul>
+            </div>
         </div>
-        
+
         <div class="card full-width">
             <h2>📜 System Logs</h2>
             <div id="system-logs" class="console-log">
@@ -39,4 +48,5 @@
     </div>
     <script src="client.js"></script>
 </body>
+
 </html>

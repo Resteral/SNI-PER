@@ -1,6 +1,7 @@
 const { Wallet, Contract, parseEther, parseUnits } = require('ethers');
 const CONFIG = require('./config');
 const { log } = require('./utils');
+const positionManager = require('./position-manager');
 
 async function snipe(tokenAddress, pairAddress, provider, io) {
     const wallet = new Wallet(process.env.PRIVATE_KEY, provider);
@@ -18,6 +19,9 @@ async function snipe(tokenAddress, pairAddress, provider, io) {
             status: 'SUCCESS',
             time: new Date().toISOString()
         });
+
+        // Track position even in simulation
+        positionManager.addPosition(tokenAddress, parseEther(CONFIG.AMOUNT_TO_BUY_BNB), parseEther(CONFIG.AMOUNT_TO_BUY_BNB));
 
         return;
     }
@@ -63,6 +67,8 @@ async function snipe(tokenAddress, pairAddress, provider, io) {
             status: 'SUCCESS',
             time: new Date().toISOString()
         });
+
+        positionManager.addPosition(tokenAddress, amountIn, amountIn); // Needs exact token amount ideally, using input BNB as proxy for now or fetch receipt
 
     } catch (error) {
         log(`Snipe Failed: ${error.message}`, 'ERROR');
