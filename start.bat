@@ -1,4 +1,7 @@
 @echo off
+echo Starting SNI-PER Setup...
+node src/setup.js
+echo.
 echo Starting SNI-PER Bot...
 echo Dashboard will open in your browser.
 node src/index.js
