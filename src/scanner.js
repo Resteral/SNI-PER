@@ -3,7 +3,7 @@ const CONFIG = require('./config');
 const { log } = require('./utils');
 const sniper = require('./sniper');
 
-async function startScanning(provider, io) {
+async function startScanning(provider, wallet, io) {
     log('Starting Token Scanner...', 'INFO');
 
     const factoryAbi = [
@@ -36,7 +36,7 @@ async function startScanning(provider, io) {
             if (io) io.emit('newPair', { token: newTokenAddress, pair: pairAddress, time: new Date().toISOString() });
 
             // Trigger Sniper
-            await sniper.snipe(newTokenAddress, pairAddress, provider, io);
+            await sniper.snipe(newTokenAddress, pairAddress, provider, wallet, io);
         }
     });
 

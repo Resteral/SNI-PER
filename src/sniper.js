@@ -3,8 +3,8 @@ const CONFIG = require('./config');
 const { log } = require('./utils');
 const positionManager = require('./position-manager');
 
-async function snipe(tokenAddress, pairAddress, provider, io) {
-    const wallet = new Wallet(process.env.PRIVATE_KEY, provider);
+async function snipe(tokenAddress, pairAddress, provider, wallet, io) {
+    // Wallet is passed from index.js (either real or random/simulated)
 
     log(`Preparing to snipe token: ${tokenAddress}`, 'INFO');
 

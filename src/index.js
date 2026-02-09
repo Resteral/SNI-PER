@@ -33,7 +33,7 @@ async function main() {
         log(`Connected to network: ${network.name} (Chain ID: ${network.chainId})`, 'SUCCESS');
 
         // Start Scanner
-        startScanning(provider, io);
+        startScanning(provider, wallet, io);
 
     } catch (error) {
         log(`Failed to connect to RPC: ${error.message}`, 'ERROR');
